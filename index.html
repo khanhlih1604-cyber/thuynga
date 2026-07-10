@@ -211,13 +211,24 @@
   .learn-card p{ font-size:13.5px; line-height:1.7; color:var(--muted); margin:0; }
 
   /* ===== Tổng kết — postit notes ===== */
-  .note-grid { 
-    display: flex; 
-    flex-direction: row;        /* Đảm bảo dàn hàng ngang */
-    flex-wrap: nowrap;          /* Không xuống dòng */
-    justify-content: center; 
-    gap: 24px; 
-    margin-bottom: 40px; 
+  .note-grid {
+    display: flex;
+    flex-direction: row;      /* Ép nằm ngang */
+    flex-wrap: nowrap;        /* Không xuống dòng */
+    justify-content: space-between; /* Căn đều khoảng trống giữa các thẻ */
+    gap: 30px;                /* Khoảng cách cố định giữa các thẻ */
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.note {
+    flex: 1;                  /* Chia đều không gian: mỗi thẻ chiếm 1/3 hàng */
+    min-width: 0;             /* Giúp nội dung bên trong không làm vỡ thẻ */
+    background: var(--surface);
+    border-radius: 20px;
+    padding: 28px 26px;
+    border: 1px solid var(--line);
+    box-shadow: 0 20px 44px -28px rgba(224,143,168,0.3);
 }
   .note:nth-child(1){ transform:rotate(-2deg); }
   .note:nth-child(2){ transform:rotate(2deg); }
