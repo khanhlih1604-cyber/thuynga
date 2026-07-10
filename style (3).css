@@ -1,0 +1,414 @@
+/* ==========================================================================
+   1. VARIABLES & SYSTEM RESET
+   ========================================================================== */
+:root {
+  --bg: #fdf2f6;
+  --surface: #ffffff;
+  --rose: #f4b3cf;
+  --rose-deep: #e0688f;
+  --lavender: #eabede;
+  --lavender-deep: #c96fb5;
+  --ink: #4a3b45;
+  --muted: #9c8a94;
+  --line: rgba(74, 59, 69, 0.09);
+  --line-strong: rgba(224, 143, 168, 0.35);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Be Vietnam Pro', sans-serif;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* ==========================================================================
+   2. BACKGROUND CANVAS & STICKERS
+   ========================================================================== */
+#wash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.decor-sticker {
+  position: absolute;
+  font-size: 1.6rem;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.6;
+  animation: floaty 6s ease-in-out infinite;
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(8deg); }
+}
+
+/* ==========================================================================
+   3. STRUCTURAL LAYOUT
+   ========================================================================== */
+.main-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 40px;
+}
+
+@media (max-width: 850px) {
+  .main-container {
+    grid-template-columns: 1fr;
+    padding-top: 20px;
+  }
+}
+
+/* ==========================================================================
+   4. LEFT SIDEBAR (PROFILE CARD)
+   ========================================================================== */
+.sidebar {
+  position: sticky;
+  top: 40px;
+  align-self: start;
+}
+
+@media (max-width: 850px) {
+  .sidebar {
+    position: relative;
+    top: 0;
+  }
+}
+
+.profile-card {
+  background: var(--surface);
+  border-radius: 28px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 16px 40px rgba(224, 104, 143, 0.08);
+  border: 1px solid var(--line);
+}
+
+.avatar-container {
+  width: 130px;
+  height: 130px;
+  margin: 0 auto 20px;
+  background: linear-gradient(135deg, var(--rose), var(--lavender));
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 3rem;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(224, 104, 143, 0.2);
+}
+
+.profile-card h1 {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.student-id {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: var(--bg);
+  color: var(--rose-deep);
+  padding: 3px 10px;
+  border-radius: 99px;
+  margin-bottom: 24px;
+}
+
+.meta-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+  border-top: 1px dashed var(--line-strong);
+  padding-top: 24px;
+}
+
+.meta-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+.meta-item .icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.meta-item div span {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   5. RIGHT CONTENT AREA
+   ========================================================================== */
+.content-area {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.card {
+  background: var(--surface);
+  border-radius: 28px;
+  padding: 36px;
+  box-shadow: 0 16px 40px rgba(224, 104, 143, 0.05);
+  border: 1px solid var(--line);
+}
+
+@media (max-width: 500px) {
+  .card {
+    padding: 24px;
+  }
+}
+
+.section-title {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 1.5rem;
+  color: var(--ink);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.intro-p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+
+.intro-p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Highlight Text Base */
+.hl-pink { color: var(--rose-deep); font-weight: 600; }
+.hl-purple { color: var(--lavender-deep); font-weight: 600; }
+
+/* Grid blocks for goals */
+.goals-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+@media (max-width: 600px) {
+  .goals-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.goal-block {
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+}
+
+.goal-block.pink { background: rgba(244, 179, 207, 0.15); }
+.goal-block.purple { background: rgba(234, 190, 222, 0.15); }
+
+.goal-block h4 {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 1.15rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.goal-block p {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+/* ==========================================================================
+   6. INTERACTIVE ACCORDION (ASSIGNMENTS)
+   ========================================================================== */
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ex-item {
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  background: var(--surface);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ex-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(74, 59, 69, 0.04);
+}
+
+.ex-head {
+  padding: 18px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  background: #fff;
+  user-select: none;
+}
+
+.ex-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ex-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--rose-deep);
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
+.ex-item:nth-child(even) .ex-num {
+  color: var(--lavender-deep);
+}
+
+.ex-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.ex-toggle {
+  font-size: 0.8rem;
+  color: var(--muted);
+  transition: transform 0.3s ease;
+}
+
+.ex-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(74, 59, 69, 0.01);
+}
+
+.ex-content {
+  padding: 4px 24px 24px 68px;
+}
+
+@media (max-width: 500px) {
+  .ex-content {
+    padding: 4px 20px 20px 20px;
+  }
+}
+
+/* Active Open Accordion State (Handled by JS Class) */
+.ex-item.active .ex-head {
+  border-bottom: 1px dashed var(--line);
+}
+
+.ex-item.active .ex-toggle {
+  transform: rotate(180deg);
+}
+
+/* Inner Details inside Accordion Body */
+.task-box {
+  background: var(--surface);
+  border-radius: 14px;
+  padding: 16px;
+  border-left: 4px solid var(--rose);
+  margin-bottom: 14px;
+}
+
+.ex-item:nth-child(even) .task-box {
+  border-left-color: var(--lavender);
+}
+
+.task-box p {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin-bottom: 6px;
+}
+
+.task-box p:last-child {
+  margin-bottom: 0;
+}
+
+.drive-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--rose-deep);
+  text-decoration: none;
+  background: var(--bg);
+  padding: 5px 12px;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.ex-item:nth-child(even) .drive-link {
+  color: var(--lavender-deep);
+}
+
+.drive-link:hover {
+  background: var(--rose-deep);
+  color: #fff;
+}
+
+.ex-item:nth-child(even) .drive-link:hover {
+  background: var(--lavender-deep);
+  color: #fff;
+}
+
+/* ==========================================================================
+   7. FOOTER STYLE
+   ========================================================================== */
+.footer {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding-top: 20px;
+  font-size: 0.8rem;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+}
