@@ -30,12 +30,27 @@
   h1,h2,h3,.display{font-family:'Baloo 2',cursive; font-weight:600;}
   ::selection{background:var(--rose); color:#fff;}
 
+  .vision-grid{ display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
+  .vision-card{ background: var(--surface); padding: 30px; border-radius: 24px; border: 1px solid var(--line); text-align: left; }
+  .vision-card h3{ color: var(--rose-deep); margin-bottom: 15px; font-size: 1.2rem; }
+  .vision-card p{ font-size: 14px; color: var(--muted); line-height: 1.7; }
+
   /* ===== animated backdrop ===== */
-  #wash{ position:fixed; inset:0; z-index:0; pointer-events:none; }
-  .fade-edge{
-    position:fixed; inset:0; z-index:1; pointer-events:none;
-    background:radial-gradient(ellipse at center, transparent 45%, rgba(253,246,248,0.85) 100%);
-  }
+ #wash{ position:fixed; inset:0; z-index:0; pointer-events:none; }
+  .fade-edge{ position:fixed; inset:0; z-index:1; pointer-events:none; background:radial-gradient(ellipse at center, transparent 45%, rgba(253,246,248,0.85) 100%); }
+  .stepper-wrap{ position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(253,246,248,0.85); backdrop-filter:blur(14px); border-bottom:1px solid var(--line); padding:16px 6vw; }
+  .stepper{ display:flex; align-items:center; max-width:760px; margin:0 auto; }
+  .step{ display:flex; flex-direction:column; align-items:center; gap:6px; flex:1; cursor:pointer; text-decoration:none; position:relative; }
+  .step-circle{ width:26px; height:26px; border-radius:50%; background:var(--surface); border:2px solid var(--line-strong); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; color:var(--muted); transition:all .4s cubic-bezier(.34,1.56,.64,1); z-index:2; }
+  .step.active .step-circle{ background:linear-gradient(135deg, var(--rose), var(--lavender)); border-color:transparent; color:#fff; transform:scale(1.15); }
+  .step-line{ position:absolute; top:13px; left:-50%; width:100%; height:2px; background:var(--line-strong); z-index:1; }
+  
+  section{ padding:110px 6vw; max-width:880px; margin:0 auto; }
+  .reveal{opacity:0; transform:translateY(32px); transition:opacity .8s ease, transform .8s cubic-bezier(.2,.7,.3,1);}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  .tag{ font-size:11.5px; font-weight:700; color:var(--rose-deep); letter-spacing:2px; text-transform:uppercase; margin-bottom:14px; display:flex; align-items:center; justify-content:center; gap:10px; }
+  .tag::before, .tag::after{ content:''; width:20px; height:1px; background:var(--rose-deep); }
+  h2.section-title{ font-size:clamp(26px,3.2vw,38px); text-align: center; margin-bottom: 20px;}
   .drift{ position:fixed; z-index:1; pointer-events:none; font-size:20px; opacity:0.6; animation:drift 9s ease-in-out infinite; }
   @keyframes drift{ 0%,100%{transform:translateY(0) rotate(-6deg);} 50%{transform:translateY(-24px) rotate(6deg);} }
 
@@ -286,6 +301,20 @@
     <div class="story-card reveal">
       <p>Xin chào, mình là <b>Nguyễn Thúy Nga</b>, hiện đang là sinh viên ngành Ngôn ngữ và Văn hóa Trung Quốc tại
         Trường Đại học Ngoại ngữ - Đại học Quốc gia Hà Nội. Mình là một người luôn tràn đầy tò mò với thế giới xung quanh; mình chọn đọc sách để không ngừng tìm tòi tri thức mới, chọn xem phim để khám phá những góc nhìn cuộc sống và yêu thích những buổi mua sắm như một cách nạp lại năng lượng tích cực. Đối với mình, tiếng Trung là chiếc cầu nối đưa mình đến với chiều sâu văn hóa phương Đông, còn công nghệ chính là đôi cánh. Mình tin rằng việc làm chủ các công cụ số sẽ giúp thế hệ sinh viên ngôn ngữ như tụi mình tiến xa và nhạy bén hơn trong thời đại mới.
+    </div>
+    <div class="vision-grid">
+      <div class="vision-card reveal">
+        <h3>🎯 Mục tiêu học tập</h3>
+        <p>Không chỉ dừng lại ở việc tiếp thu kiến thức ngôn ngữ, mình đặt mục tiêu làm chủ các công cụ AI tạo sinh, ứng dụng tư duy số vào nghiên cứu văn hóa và tối ưu hóa hiệu suất làm việc nhóm trên môi trường số.</p>
+      </div>
+      <div class="vision-card reveal">
+        <h3>🚀 Định hướng phát triển</h3>
+        <p>Trở thành một nhân sự đa năng trong kỷ nguyên số, kết hợp nền tảng ngôn ngữ vững chắc với khả năng sử dụng công nghệ để giải quyết các bài toán truyền thông và văn hóa hiện đại.</p>
+      </div>
+      <div class="vision-card reveal">
+        <h3>📂 Mục đích Portfolio</h3>
+        <p>Đây là "cuốn nhật ký số" giúp mình hệ thống hóa toàn bộ các bài thực hành, đo lường sự trưởng thành trong tư duy công nghệ và là minh chứng cho sự nỗ lực, liêm chính trong học tập của mình.</p>
+      </div>
     </div>
   </section>
 
